@@ -8,7 +8,6 @@ import {
   TrendingUp,
   ShieldAlert,
   Timer,
-  Clock,
   Cpu,
   FileSearch,
   Search,
@@ -30,7 +29,7 @@ const springPresets = {
 const scrollToSection = (id: string) => {
   const element = document.getElementById(id.replace("#", ""));
   if (element) {
-    const headerOffset = 80;
+    const headerOffset = 100;
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -50,7 +49,7 @@ const BRAND_CONFIG = {
 }
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -59,7 +58,7 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.12,
     },
   },
 };
@@ -71,43 +70,44 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero"
-        className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-primary"
+        className="relative min-h-[92vh] flex items-center pt-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.HERO_BG_2}
             alt="Enterprise Intelligence"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-primary/80 via-primary/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-800/95" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="max-w-4xl"
+            className="max-w-5xl"
           >
-            <motion.div variants={fadeInUp} transition={springPresets.gentle}>
-              <Badge variant="outline" className="mb-6 border-accent text-accent-foreground backdrop-blur-sm">
+            <motion.div variants={fadeInUp} transition={{ ...springPresets.gentle, delay: 0.1 }}>
+              <Badge variant="outline" className="mb-8 border-slate-400/30 text-slate-300 backdrop-blur-sm bg-slate-800/50 px-5 py-2 text-sm font-medium tracking-wide">
                 Procurement. Compliance. Autonomy.
               </Badge>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-              Smarter Procurement & Supplier Control on Your ERP
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-[1.1] tracking-tight">
+                Smarter Procurement & Supplier Control on Your ERP
               </h1>
 
-              <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl leading-relaxed font-light">
                 E-invoicing may be the trigger but correctness begins long before invoice submission.
                 Dice validates vendors, transactions, approvals, and documents in real time so only
                 compliant, audit-ready data reaches your ERP.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-5">
                 <Button
                   size="lg"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-14 text-lg group"
+                  className="bg-white hover:bg-slate-100 text-slate-900 font-semibold px-10 h-16 text-lg group shadow-xl hover:shadow-2xl transition-all"
                   onClick={() => scrollToSection("#compliance-gap")}
                 >
                   Assess Your Procurement Compliance
@@ -117,7 +117,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-white border-white/20 hover:bg-white/10 h-14 text-lg"
+                  className="text-white border-slate-400/30 hover:bg-slate-800/50 backdrop-blur-sm h-16 text-lg font-medium"
                   onClick={() => scrollToSection("#cta")}
                 >
                   Deploy Dice Platform
@@ -126,12 +126,14 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* SECTION 2 */}
-      <section id="compliance-gap" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section id="compliance-gap" className="py-28 bg-white">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
 
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -139,16 +141,16 @@ export default function Home() {
               viewport={{ once: true }}
               transition={springPresets.gentle}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+              <h2 className="text-3xl md:text-5xl font-light mb-8 text-slate-900 tracking-tight">
                 The Compliance Gap in Modern ERP Environments
               </h2>
 
-              <div className="space-y-6 text-muted-foreground text-lg">
-                <p className="font-medium text-foreground">
+              <div className="space-y-8 text-slate-600 text-lg">
+                <p className="font-normal text-slate-900 text-xl">
                   Traditional ERPs manage transactions. They do not inherently enforce intelligent validation across every stage of procurement and payables.
                 </p>
 
-                <ul className="space-y-4 list-disc pl-6">
+                <ul className="space-y-5 border-l-2 border-slate-200 pl-8">
                   {[
                     "Vendor onboarding without KYC, bank, and legal-entity validation",
                     "Invoice posting without multi-level correctness checks",
@@ -156,27 +158,29 @@ export default function Home() {
                     "No real-time visibility into approval and spend controls",
                     "Reactive compliance instead of policy-driven transactions"
                   ].map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx} className="text-base leading-relaxed font-light">{item}</li>
                   ))}
                 </ul>
 
-                <p className="pt-4 font-semibold text-primary border-l-4 border-accent pl-4">
-                  "If the source transaction is wrong, e-invoicing only makes the error permanent."
-                </p>
+                <div className="pt-6 bg-slate-50 border-l-4 border-primary pl-8 py-6 pr-6 rounded-r-lg">
+                  <p className="text-lg font-medium text-slate-900 italic">
+                    "If the source transaction is wrong, e-invoicing only makes the error permanent."
+                  </p>
+                </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-accent/10 rounded-3xl blur-2xl" />
+              <div className="absolute -inset-6 bg-gradient-to-br from-primary/5 to-slate-100 rounded-3xl" />
               <img
                 src={ImageCompliance}
                 alt="Compliance Gap Visualization"
-                className="relative rounded-2xl shadow-2xl border border-border"
+                className="relative rounded-2xl shadow-2xl border border-slate-200"
               />
             </motion.div>
 
@@ -185,15 +189,17 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 */}
-      <section id="dice-platform" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section id="dice-platform" className="py-28 bg-slate-50">
+        <div className="container mx-auto px-6 lg:px-8">
 
-          <div className="max-w-3xl mb-16">
-            <Badge className="mb-4 bg-primary text-primary-foreground">OEM Enterprise Platform</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <div className="max-w-3xl mb-20">
+            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium tracking-wide">
+              OEM Enterprise Platform
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-light mb-8 text-slate-900 tracking-tight">
               Dice: The Compliance Intelligence Layer
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xl text-slate-600 font-light leading-relaxed">
               Dice is an OEM enterprise platform built to extend ERP ecosystems with intelligent process orchestration and compliance-ready architecture.
             </p>
           </div>
@@ -217,7 +223,7 @@ export default function Home() {
               },
               {
                 title: "End-to-End Document Traceability",
-                desc: "From purchase request to e-invoice submission  every action is recorded and audit-ready.",
+                desc: "From purchase request to e-invoice submission — every action is recorded and audit-ready.",
                 icon: FileSearch
               },
               {
@@ -226,43 +232,46 @@ export default function Home() {
                 icon: Activity
               }
             ].map((feature, idx) => (
-              <Card key={idx} className="border-none shadow-sm hover:shadow-md transition-shadow bg-card">
+              <Card key={idx} className="border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 bg-white group hover:border-primary/20">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                    <feature.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl font-medium text-slate-900">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{feature.desc}</p>
+                  <p className="text-slate-600 leading-relaxed font-light">{feature.desc}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <p className="mt-12 text-center text-muted-foreground font-medium">
-            E-invoicing is the output. <span className="text-primary font-bold">Transaction correctness is the foundation.</span>
+          <p className="mt-16 text-center text-slate-600 font-light text-lg">
+            E-invoicing is the output. <span className="text-primary font-semibold">Transaction correctness is the foundation.</span>
           </p>
         </div>
       </section>
 
       {/* SECTION 4 */}
-      <section id="e-invoicing" className="py-24 bg-background overflow-hidden">
-        <div className="container mx-auto px-4">
+      <section id="e-invoicing" className="py-28 bg-white overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8">
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="order-2 lg:order-1"
             >
-              <img
-                src={ImageInvoice}
-                alt="E-Invoicing Process"
-                className="rounded-2xl shadow-2xl border border-border"
-              />
+              <div className="relative">
+                <div className="absolute -inset-6 bg-gradient-to-br from-primary/5 to-slate-100 rounded-3xl" />
+                <img
+                  src={ImageInvoice}
+                  alt="E-Invoicing Process"
+                  className="relative rounded-2xl shadow-2xl border border-slate-200"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -271,25 +280,25 @@ export default function Home() {
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
-              <Badge className="mb-4 bg-accent text-accent-foreground">
+              <Badge className="mb-6 bg-primary/10 text-primary border border-primary/20 px-4 py-2 text-sm font-medium tracking-wide">
                 E-Invoicing Readiness by Design
               </Badge>
 
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-5xl font-light mb-8 text-slate-900 tracking-tight">
                 Beyond E-Invoicing: The Complete Invoice Journey
               </h2>
 
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-xl text-slate-600 mb-8 font-light leading-relaxed">
                 While e-invoicing platforms handle submission, along with e-invoicing Dice ensures the data being submitted is correct,
                 approved, and fully traceable. From procurement to posting, every invoice is policy-validated,
                 matched, and visible in real time.
               </p>
 
-              <p className="text-sm font-medium text-accent mb-6">
+              <p className="text-sm font-semibold text-primary mb-10 tracking-wide uppercase">
                 UAE | KSA compliance frameworks supported
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {[
                   {
                     title: "Pre-Validated Transactions",
@@ -304,13 +313,13 @@ export default function Home() {
                     desc: "No disruption. No heavy customization. Full control before and after submission."
                   }
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4 group">
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors mt-1">
-                      <CheckCircle2 className="w-5 h-5" />
+                  <div key={idx} className="flex items-start gap-5 group">
+                    <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all mt-1 border border-slate-200 group-hover:border-primary">
+                      <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold">{item.title}</h4>
-                      <p className="text-muted-foreground">{item.desc}</p>
+                      <h4 className="text-xl font-medium text-slate-900 mb-2">{item.title}</h4>
+                      <p className="text-slate-600 font-light leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -321,20 +330,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. SQIT Partnership Section (Ref "MENA Context" Style | Target Content) */}
-      <section id="sqit-partnership" className="py-24 relative bg-muted/50">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src={IMAGES.MENA_BUSINESS_5} className="w-full h-full object-cover grayscale" alt="Background" />
+      {/* SECTION 5 */}
+      <section id="sqit-partnership" className="py-28 relative bg-slate-900">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <img src={IMAGES.MENA_BUSINESS_5} className="w-full h-full object-cover" alt="Background" />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95" />
+        
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <div className="flex items-center gap-2 text-accent mb-4">
-                <Globe className="w-5 h-5" />
+              <div className="flex items-center gap-3 text-primary mb-6">
+                <Globe className="w-6 h-6" />
                 <span className="font-semibold uppercase tracking-widest text-sm">Strategic Technology Partner</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{BRAND_CONFIG.implementationPartner}: Authorized Expertise</h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <h2 className="text-3xl md:text-5xl font-light mb-8 text-white tracking-tight">
+                {BRAND_CONFIG.implementationPartner}: Authorized Expertise
+              </h2>
+              <p className="text-xl text-slate-300 mb-12 font-light leading-relaxed">
                 SQIT is the authorized regional strategic Technology Partner for Dice. With deep ERP deployment expertise and enterprise architecture alignment capabilities, SQIT leads the journey from strategy to execution.
               </p>
               <div className="space-y-4">
@@ -344,26 +357,25 @@ export default function Home() {
                     "Aligns compliance workflows with enterprise systems",
                     "Provides structured rollout and change management support"
                 ].map((li, idx) => (
-                  <div key={idx} className="flex items-center gap-4 bg-background p-4 rounded-xl border border-border">
-                    <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center">
+                  <div key={idx} className="flex items-center gap-5 bg-slate-800/50 p-5 rounded-xl border border-slate-700/50 hover:border-primary/30 transition-all backdrop-blur-sm">
+                    <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
                       <ChevronRight className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="font-medium">{li}</span>
+                    <span className="font-light text-slate-200">{li}</span>
                   </div>
                 ))}
               </div>
             </div>
             
-            {/* Dark Card Overlay */}
-            <div className="bg-primary rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-20">
-                <TrendingUp className="w-32 h-32" />
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-12 text-white shadow-2xl relative overflow-hidden border border-slate-700/50">
+              <div className="absolute top-0 right-0 p-10 opacity-10">
+                <TrendingUp className="w-40 h-40" />
               </div>
-              <h3 className="text-2xl font-bold mb-6 relative z-10">Completing the Journey</h3>
-              <p className="text-primary-foreground/80 mb-8 relative z-10">
+              <h3 className="text-3xl font-light mb-8 relative z-10">Completing the Journey</h3>
+              <p className="text-slate-300 mb-10 relative z-10 text-lg font-light leading-relaxed">
                 Dice delivers the compliance intelligence layer. SQIT ensures successful enterprise-grade implementation.
               </p>
-              <p className="text-sm italic opacity-70 relative z-10 border-l-2 border-accent pl-4">
+              <p className="text-base font-light text-slate-400 relative z-10 border-l-2 border-primary pl-6 italic">
                 ERP systems provide the structural backbone. Dice and SQIT extend that backbone with intelligence.
               </p>
             </div>
@@ -371,15 +383,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Outcomes Section (Ref "Outcomes" Style | Target Content) */}
-      <section id="outcomes" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      {/* SECTION 6 */}
+      <section id="outcomes" className="py-28 bg-white">
+        <div className="container mx-auto px-6 lg:px-8">
 
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-3xl md:text-5xl font-light mb-8 text-slate-900 tracking-tight">
               Key Outcomes for Enterprises
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-slate-600 text-xl font-light">
               Why enterprises are moving to compliance-driven procurement.
             </p>
           </div>
@@ -412,15 +424,15 @@ export default function Home() {
                 icon: ShieldAlert
               }
             ].map((outcome, idx) => (
-              <Card key={idx}>
+              <Card key={idx} className="border border-slate-200 hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-4">
-                    <outcome.icon className="w-6 h-6 text-primary" />
+                  <div className="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors border border-slate-200">
+                    <outcome.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{outcome.title}</CardTitle>
+                  <CardTitle className="text-xl font-medium text-slate-900">{outcome.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{outcome.desc}</p>
+                  <p className="text-slate-600 leading-relaxed font-light">{outcome.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -430,38 +442,46 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="py-24 relative">
-        <div className="container mx-auto px-4">
+      <section id="cta" className="py-28 relative bg-slate-50">
+        <div className="container mx-auto px-6 lg:px-8">
 
-          <div className="relative rounded-4xl bg-primary overflow-hidden shadow-2xl">
-            <div className="relative z-10 py-20 px-8 md:px-16 text-center max-w-4xl mx-auto text-white">
+          <div className="relative rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden shadow-2xl border border-slate-700">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+            
+            <div className="relative z-10 py-24 px-8 md:px-16 text-center max-w-5xl mx-auto text-white">
 
-              <p className="text-lg font-semibold text-accent mb-8">
+              <p className="text-lg font-light text-slate-300 mb-10 tracking-wide">
                 E-invoicing will be mandatory. Transaction correctness is optional - until it becomes your risk.
               </p>
 
-              <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-              Transform ERP Operations with Compliance-Intelligent Execution <br />
-                <span className="text-accent">Continuous Compliance for every ERP Transaction</span>
+              <h2 className="text-3xl md:text-5xl font-light mb-6 leading-tight tracking-tight">
+                Transform ERP Operations with Compliance-Intelligent Execution
               </h2>
+              <p className="text-2xl md:text-3xl font-medium text-primary mb-12">
+                Continuous Compliance for every ERP Transaction
+              </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 px-10 h-16 text-xl font-bold">
+              <div className="flex flex-col sm:flex-row gap-5 justify-center">
+                <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-12 h-16 text-xl font-semibold shadow-xl hover:shadow-2xl transition-all">
                   Schedule Readiness Assessment
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 px-10 h-16 text-xl">
+                <Button size="lg" variant="outline" className="text-white border-slate-400/30 hover:bg-slate-800/50 backdrop-blur-sm px-12 h-16 text-xl font-medium">
                   Request Dice Demo
                 </Button>
               </div>
 
-              <div className="mt-12 flex items-center justify-center gap-8 opacity-60">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-6 h-6" />
-                  <span className="font-medium">20-Minute Strategy Briefing</span>
+              <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-10 text-slate-400 text-sm font-light">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
+                    <Timer className="w-5 h-5 text-primary" />
+                  </div>
+                  <span>20-Minute Strategy Briefing</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-6 h-6" />
-                  <span className="font-medium">Full Regulatory Assessment</span>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                  </div>
+                  <span>Full Regulatory Assessment</span>
                 </div>
               </div>
 
