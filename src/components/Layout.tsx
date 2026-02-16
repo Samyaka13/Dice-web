@@ -51,19 +51,19 @@ export function Layout({ children }: LayoutProps) {
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-500 ${
           isScrolled
-            ? "h-20 border-b border-border/60 bg-white/95 backdrop-blur-xl shadow-lg"
-            : "h-24 bg-white/80 backdrop-blur-sm"
+            ? "h-16 sm:h-20 border-b border-border/60 bg-white/95 backdrop-blur-xl shadow-lg"
+            : "h-16 sm:h-24 bg-white/80 backdrop-blur-sm"
         }`}
       >
-        <div className="container mx-auto flex h-full items-center justify-between px-6 lg:px-8">
+        <div className="container mx-auto flex h-full items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             to={ROUTE_PATHS.HOME}
-            className="group flex items-center gap-3 font-serif tracking-tight"
+            className="group flex items-center gap-2 sm:gap-3 font-serif tracking-tight min-w-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src={Dice} alt="Dice" className="h-7 w-auto transition-transform group-hover:scale-105" />
-            <span className="text-slate-300 font-light text-2xl">×</span>
-            <img src={SQIT} alt="SQIT" className="h-12 w-auto transition-transform group-hover:scale-105" />
+            <img src={Dice} alt="Dice" className="h-5 sm:h-7 w-auto transition-transform group-hover:scale-105 shrink-0" />
+            <span className="text-slate-300 font-light text-lg sm:text-2xl shrink-0">×</span>
+            <img src={SQIT} alt="SQIT" className="h-8 sm:h-12 w-auto transition-transform group-hover:scale-105 shrink-0 max-w-[120px] sm:max-w-none" />
           </Link>
 
           <nav className="hidden lg:flex lg:items-center lg:gap-1">
@@ -127,9 +127,9 @@ export function Layout({ children }: LayoutProps) {
 
       <main className="grow">{children}</main>
 
-      <footer className="border-t border-slate-200 bg-slate-50 pt-20 pb-12">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-12">
+      <footer className="border-t border-slate-200 bg-slate-50 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Link 
                 to={ROUTE_PATHS.HOME} 
@@ -145,7 +145,7 @@ export function Layout({ children }: LayoutProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-12 lg:col-span-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:col-span-4">
               <div>
                 <h4 className="mb-6 text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-2">Platform</h4>
                 <ul className="space-y-3">
@@ -243,7 +243,7 @@ export function Layout({ children }: LayoutProps) {
             </div>
           </div>
 
-          <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-slate-200 pt-10 md:flex-row">
+          <div className="mt-10 sm:mt-16 flex flex-col items-center justify-between gap-4 sm:gap-6 border-t border-slate-200 pt-8 sm:pt-10 md:flex-row text-center md:text-left">
             <p className="text-xs text-slate-500 font-light">
               © {PARTNERSHIP_INFO.year} {PARTNERSHIP_INFO.name} Partnership. All rights reserved.
             </p>
