@@ -4,19 +4,13 @@ import {
   ArrowRight, 
   CheckCircle2, 
   ShieldCheck, 
-  Zap, 
-  Layers, 
   Globe, 
   TrendingUp, 
-  BarChart3, 
-  ShoppingCart, 
   ShieldAlert, 
   Timer, 
   Clock,
   Cpu,
   FileSearch,
-  Database,
-  Building2,
   FileCheck,     // Added from Target
   Search,        // Added from Target
   Activity,      // Added from Target
