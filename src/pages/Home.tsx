@@ -152,7 +152,7 @@ export default function Home() {
                   {[
                     "Vendor onboarding without KYC, bank, and legal-entity validation",
                     "Invoice posting without multi-level correctness checks",
-                    "Manual three-way matching across PO, GRN, and invoice",
+                    "Manual n-way matching across PO, GRN, invoice, etc.",
                     "No real-time visibility into approval and spend controls",
                     "Reactive compliance instead of policy-driven transactions"
                   ].map((item, idx) => (
