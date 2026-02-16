@@ -101,7 +101,7 @@ export function Layout({ children }: LayoutProps) {
         </AnimatePresence>
       </header>
 
-      <main className="flex-grow">{children}</main>
+      <main className="grow">{children}</main>
 
       <footer className="border-t border-border bg-secondary/30 pt-16 pb-8">
         <div className="container mx-auto px-4">

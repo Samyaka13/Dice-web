@@ -79,7 +79,7 @@ export default function Home() {
             alt="Enterprise Intelligence"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-background" />
+          <div className="absolute inset-0 bg-linear-to-b from-primary/80 via-primary/60 to-background" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -433,7 +433,7 @@ export default function Home() {
       <section id="cta" className="py-24 relative">
         <div className="container mx-auto px-4">
 
-          <div className="relative rounded-[2rem] bg-primary overflow-hidden shadow-2xl">
+          <div className="relative rounded-4xl bg-primary overflow-hidden shadow-2xl">
             <div className="relative z-10 py-20 px-8 md:px-16 text-center max-w-4xl mx-auto text-white">
 
               <p className="text-lg font-semibold text-accent mb-8">
