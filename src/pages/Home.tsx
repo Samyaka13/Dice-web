@@ -95,7 +95,7 @@ export default function Home() {
               </Badge>
 
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
-                Autonomous Procurement & Vendor Compliance for ERP-Led Enterprises
+              Smarter Procurement & Supplier Control on Your ERP
               </h1>
 
               <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl leading-relaxed">
@@ -441,8 +441,8 @@ export default function Home() {
               </p>
 
               <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-                Deploy Agentic AI. Transform ERP Operations.<br />
-                <span className="text-accent">Achieve Compliance-Intelligent Execution.</span>
+              Transform ERP Operations with Compliance-Intelligent Execution <br />
+                <span className="text-accent">Continuous Compliance for every ERP Transaction</span>
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
